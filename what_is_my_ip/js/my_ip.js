@@ -3,12 +3,13 @@ function httpRequest(url, callback){
     xhr.open("GET", url, true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
-            callback(xhr.responseText);
+        	var ip = xhr.responseText.match(/\d+\.\d+\.\d+\.\d+/g);
+            callback(ip);
         }
     }
     xhr.send();
 }
 
-httpRequest('http://sneezryworks.sinaapp.com/ip.php', function(ip){
+httpRequest('http://1212.ip138.com/ic.asp', function(ip){
     document.getElementById('ip_div').innerText = ip;
 });
